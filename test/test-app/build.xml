@@ -1,0 +1,32 @@
+<project name="test-app" default="clean">
+  <path id="lib-provided">
+    <fileset dir="_lib/provided" />
+  </path>
+
+  <target name="clean">
+    <delete dir="_target" />
+  </target>
+
+  <target name="compile">
+    <mkdir dir="_target/classes" />
+    <javac srcdir="src/main/java" destdir="_target/classes">
+      <classpath refid="lib-provided" />
+    </javac>
+  </target>
+
+  <target name="package" depends="compile">
+    <mkdir dir="_target/test-app" />
+    <copy todir="_target/test-app" >
+      <fileset dir="src/main/webapp" />
+    </copy>
+
+    <mkdir dir="_target/test-app/WEB-INF/classes" />
+    <copy todir="_target/test-app/WEB-INF/classes" >
+      <fileset dir="_target/classes" />
+    </copy>
+
+    <war warfile="_target/test-app.war" needxmlfile="false" >
+      <fileset dir="_target/test-app" />
+    </war>
+  </target>
+</project>
