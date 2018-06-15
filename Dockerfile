@@ -20,6 +20,7 @@ RUN yum install -y ant && yum clean all -y
 
 # TODO: Copy the S2I scripts to /usr/libexec/s2i, since openshift/base-centos7 image
 # sets io.openshift.s2i.scripts-url label that way, or update that label
+RUN cp /usr/libexec/s2i/assemble /usr/libexec/s2i/assemble-base
 COPY ./s2i/bin/ /usr/libexec/s2i
 
 # TODO: Drop the root user and make the content of /opt/app-root owned by user 1001

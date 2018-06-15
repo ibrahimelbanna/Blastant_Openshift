@@ -20,7 +20,7 @@ fi
 # fi
 
 echo "---> Installing application source..."
-cp -Rf /tmp/src/. ./
+cp -Rf /opt/s2i/destination/src/. ./
 
 echo "---> Building application from source..."
 ant clean package
@@ -29,4 +29,4 @@ echo "---> Copy war to deploy."
 mkdir -p deployments
 cp _target/*.war deployments/
 
-/usr/libexec/s2i/assemble
+/usr/libexec/s2i/assemble-base
