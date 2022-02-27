@@ -20,13 +20,15 @@ fi
 # fi
 
 echo "---> Installing application source..."
-cp -Rf /opt/s2i/destination/src/. ./
+cp -Rf /tmp/src/*  ./
 
 echo "---> Building application from source..."
-ant clean package
+# ant clean package
+ant -Dlevel=$profile
 
 echo "---> Copy war to deploy."
 mkdir -p deployments
-cp _target/*.war deployments/
+cp /opt/tomcat/dist/saw-prod.war /opt/tomcat/webapps/saw-prod.war
+ls -al /opt/tomcat/webapps/
 
-/usr/libexec/s2i/assemble-base
+# /usr/libexec/s2i/assemble

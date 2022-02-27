@@ -1,0 +1,23 @@
+#!/bin/bash -e
+#
+# S2I run script for the 's2i-java' image.
+# The run script executes the server that runs your application.
+#
+# For more information see the documentation:
+#	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#
+
+#cd /opt/openshift && \
+#exec java \
+#    -Djava.security.egd=file:/dev/./urandom \
+#    -jar /opt/openshift/app.war \
+#    $APP_OPTIONS
+df -h
+/opt/tomcat/bin/catalina.sh run 
+ln -s /usr/bin/blastToXml.pl  /opt/tomcat/webapps/saw-prod/commands/blastToXml.pl 
+ln -s /usr/bin/getSylkSequences.pl  /opt/tomcat/webapps/saw-prod/commands/getSylkSequences.pl 
+ln -s  /usr/bin/getSylkSequencesIncremental.pl /opt/tomcat/webapps/saw-prod/commands/getSylkSequencesIncremental.pl 
+echo "this test"
+
+ps -aux|grep java
+
