@@ -158,6 +158,7 @@ RUN wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.2.18/ncbi-blast
    RUN perl -MCPAN -e"install Test::Exception" rm -fr root/.cpanm; exit 0
    RUN perl -MCPAN -e"install Test::Harness" rm -fr root/.cpanm; exit 0
    RUN perl -MCPAN -e"install Test::Most" rm -fr root/.cpanm; exit 0
+   RUN perl -MCPAN -e"install Test::More" rm -fr root/.cpanm; exit 0
    RUN perl -MCPAN -e"install Test::NoWarnings" rm -fr root/.cpanm; exit 0
    RUN perl -MCPAN -e"install Test::Number::Delta" rm -fr root/.cpanm; exit 0
    RUN perl -MCPAN -e"install Test::Requires" rm -fr root/.cpanm; exit 0
